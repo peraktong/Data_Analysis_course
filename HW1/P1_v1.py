@@ -235,6 +235,7 @@ for count in range(0,5):
         plt.loglog(kh_nonlin, pk_nonlin[i, :], "x", color=color_array[count], ls=line)
 
     # save linear
+    print("Saving")
     title = np.array(["kh","pk"])
 
     data_save = np.vstack((title,np.c_[kh,pk.ravel()]))
@@ -252,7 +253,7 @@ for count in range(0,5):
     pickle.dump(data_save, output)
     output.close()
 
-    
+
     plt.plot([],[],"o", color=color_array[count],label="Linear z=%.2f"%(count*0.25))
     plt.plot([], [], "x", color=color_array[count], label="Non-linear z=%.2f" % (count * 0.25))
 
@@ -260,8 +261,8 @@ for count in range(0,5):
     print("Doing z=%.2f" % (count * 0.25))
 
 plt.legend()
-plt.xlabel('k/h Mpc')
-plt.ylabel('P(k)')
+plt.xlabel('log[k/h]')
+plt.ylabel('log[P(k)]')
 plt.title('Matter power from z=0 to 1')
 
 # save:
